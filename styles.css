@@ -127,7 +127,7 @@
 
 .ledger-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
 }
 
@@ -308,16 +308,6 @@
   text-transform: uppercase;
 }
 
-@media (max-width: 1100px) {
-  .ledger-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .ledger-card:last-child {
-    grid-column: 1 / -1;
-  }
-}
-
 @media (max-width: 760px) {
   .season-ledger {
     width: min(calc(100% - 32px), 1280px);
@@ -336,10 +326,6 @@
 
   .ledger-grid {
     grid-template-columns: 1fr;
-  }
-
-  .ledger-card:last-child {
-    grid-column: auto;
   }
 
   .ledger-card {
