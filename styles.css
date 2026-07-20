@@ -86,3 +86,252 @@
   .photo-lightbox{width:calc(100vw - 20px)}
 }
 @media(prefers-reduced-motion:reduce){.memory-card img{transition:none}}
+
+
+/* Season ledger */
+.season-ledger {
+  width: min(calc(100% - 64px), 1280px);
+  margin: 0 auto;
+  padding: clamp(88px, 10vw, 140px) 0 0;
+}
+
+.ledger-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  gap: 56px;
+  align-items: end;
+  margin-bottom: 42px;
+}
+
+.ledger-heading h2 {
+  margin: 16px 0 0;
+  font-family: var(--display);
+  font-size: clamp(3.8rem, 8vw, 7.8rem);
+  font-weight: 900;
+  line-height: .76;
+  letter-spacing: -.055em;
+}
+
+.ledger-heading h2 em {
+  color: var(--cyan);
+  font-style: normal;
+}
+
+.ledger-heading > p {
+  max-width: 38ch;
+  margin: 0 0 4px auto;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.65;
+}
+
+.ledger-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.ledger-card {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(26px, 4vw, 46px);
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 90% 0%, rgba(0,183,229,.1), transparent 36%),
+    rgba(255,255,255,.035);
+}
+
+.ledger-card::after {
+  content: "";
+  position: absolute;
+  right: -28px;
+  top: -28px;
+  width: 112px;
+  aspect-ratio: 1;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 50%;
+}
+
+.ledger-featured {
+  border-color: rgba(0,183,229,.46);
+  background:
+    linear-gradient(135deg, rgba(0,183,229,.16), transparent 48%),
+    rgba(255,255,255,.045);
+  box-shadow: inset 0 3px 0 var(--cyan);
+}
+
+.ledger-card header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 34px;
+}
+
+.ledger-card header span {
+  font-family: var(--display);
+  font-size: 1.45rem;
+  font-weight: 900;
+  letter-spacing: .06em;
+}
+
+.ledger-card header small {
+  padding: 8px 12px;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 999px;
+  color: var(--cyan);
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.ledger-photo {
+  height: clamp(220px, 24vw, 310px);
+  margin: 0 0 32px;
+  overflow: hidden;
+  border: 1px solid rgba(66, 211, 255, 0.18);
+  border-radius: 16px;
+  background: #07121a;
+}
+
+.ledger-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 300ms ease;
+}
+
+.ledger-card:hover .ledger-photo img {
+  transform: scale(1.025);
+}
+
+.ledger-photo-portrait img {
+  object-position: center 32%;
+}
+
+.ledger-record {
+  display: flex;
+  align-items: end;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.ledger-record strong {
+  font-family: var(--display);
+  font-size: clamp(5rem, 10vw, 8.2rem);
+  font-weight: 900;
+  line-height: .72;
+  letter-spacing: -.06em;
+}
+
+.ledger-record > span {
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.ledger-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 0 30px;
+  padding: 18px 0;
+  border-top: 1px solid rgba(255,255,255,.12);
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+
+.ledger-stats div {
+  padding: 0 16px;
+  border-left: 1px solid rgba(255,255,255,.12);
+}
+
+.ledger-stats div:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.ledger-stats dt {
+  margin-bottom: 7px;
+  color: var(--muted);
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.ledger-stats dd {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(1.25rem, 2.5vw, 1.9rem);
+  font-weight: 900;
+  line-height: 1;
+}
+
+.ledger-story {
+  display: grid;
+  gap: 12px;
+}
+
+.ledger-story p {
+  margin: 0;
+  color: #c2c8ce;
+  line-height: 1.6;
+}
+
+.ledger-story b {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--white);
+  font-size: .72rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 760px) {
+  .season-ledger {
+    width: min(calc(100% - 32px), 1280px);
+    padding-top: 72px;
+  }
+
+  .ledger-heading {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 30px;
+  }
+
+  .ledger-heading > p {
+    margin: 0;
+  }
+
+  .ledger-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ledger-card {
+    border-radius: 20px;
+  }
+
+  .ledger-record strong {
+    font-size: clamp(5.4rem, 26vw, 7.3rem);
+  }
+}
+
+@media (max-width: 420px) {
+  .ledger-stats div {
+    padding: 0 10px;
+  }
+
+  .ledger-stats dt {
+    font-size: .55rem;
+    letter-spacing: .08em;
+  }
+
+  .ledger-stats dd {
+    font-size: 1.2rem;
+  }
+}
