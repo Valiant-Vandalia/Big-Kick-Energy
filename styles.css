@@ -208,10 +208,6 @@
   transform: scale(1.025);
 }
 
-.ledger-photo-portrait img {
-  object-position: center 32%;
-}
-
 .ledger-photo-2023 img {
   object-position: center 48%;
 }
