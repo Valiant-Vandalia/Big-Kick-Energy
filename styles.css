@@ -13,3 +13,76 @@
 @media(prefers-reduced-motion:reduce){.highlight-link{transition-duration:.01ms!important}}
 .highlight-heading{display:flex;justify-content:space-between;margin-top:42px;padding-bottom:14px;border-bottom:1px solid var(--line);font-size:9px;font-weight:800;letter-spacing:.15em}.highlight-heading span{color:var(--cyan)}.highlight-heading small{color:var(--muted);font-size:8px}.highlight-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px}.highlight-grid .highlight-link{margin-top:0}.highlight-grid .highlight-link strong{font-size:18px}
 @media(max-width:760px){.highlight-heading{margin-top:30px}.highlight-heading small{display:none}.highlight-grid{grid-template-columns:1fr;gap:10px}.highlight-grid .highlight-link{margin-top:0}}
+
+/* Historical team moments */
+.topbar nav a.active{color:var(--cyan)}
+.mobile-dock a.active{color:var(--white);background:rgba(16,188,227,.09)}
+.history-page{background:
+  radial-gradient(circle at 84% 8%,rgba(16,188,227,.12),transparent 28rem),
+  var(--ink)}
+.history-page .topbar{position:relative;left:auto;transform:none;margin:0 auto}
+.history-hero{position:relative;overflow:hidden;padding:clamp(90px,12vw,160px) 0 0;border-bottom:1px solid var(--line)}
+.history-hero::before{content:"BKE";position:absolute;right:-.04em;top:-.18em;color:rgba(255,255,255,.025);font:900 clamp(260px,42vw,610px)/1 var(--display);letter-spacing:-.09em;pointer-events:none}
+.history-hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,.5fr);align-items:end;gap:64px;width:min(calc(100% - 64px),1280px);margin:0 auto;padding-bottom:clamp(72px,9vw,120px)}
+.history-hero h1{font-size:clamp(98px,13vw,186px)}
+.history-intro{max-width:390px;padding:0 0 18px 28px;border-left:2px solid var(--cyan)}
+.history-intro>span{color:var(--cyan);font-size:9px;font-weight:800;letter-spacing:.18em}
+.history-intro p{margin:18px 0 28px;color:#d4dde2;font-size:17px;line-height:1.7}
+.history-intro a{display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid rgba(16,188,227,.5);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.history-intro a b{color:var(--cyan);font-size:16px}
+.history-marquee{position:relative;z-index:1;overflow:hidden;border-top:1px solid var(--line);background:var(--cyan);color:var(--ink);white-space:nowrap}
+.history-marquee span{display:block;width:max-content;padding:12px 0;font:900 17px/1 var(--display);letter-spacing:.18em}
+.history-content{width:min(calc(100% - 64px),1280px);margin:0 auto;padding:clamp(88px,10vw,140px) 0}
+.history-heading{display:grid;grid-template-columns:1fr minmax(280px,430px);align-items:end;gap:64px;margin-bottom:56px}
+.history-heading .section-label{margin-bottom:42px}
+.history-heading h2{font-size:clamp(78px,9vw,128px)}
+.history-heading>p{margin:0 0 8px;color:var(--muted);font-size:15px;line-height:1.8}
+.memory-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:dense;gap:14px}
+.memory-card{position:relative;margin:0;overflow:hidden;background:var(--panel);border:1px solid var(--line)}
+.memory-card.memory-wide{grid-column:span 8;aspect-ratio:4/3}
+.memory-card.memory-tall{grid-column:span 4;aspect-ratio:3/4}
+.memory-card button{display:block;width:100%;height:100%;padding:0;border:0;background:none;cursor:zoom-in}
+.memory-card img{width:100%;height:100%;object-fit:cover;filter:saturate(.88) contrast(1.04);transition:transform .55s ease,filter .3s ease}
+.memory-card::after{content:"+";position:absolute;top:16px;right:16px;display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(255,255,255,.45);border-radius:50%;background:rgba(4,10,14,.35);font:500 19px/1 var(--body);pointer-events:none;backdrop-filter:blur(8px)}
+.memory-card figcaption{position:absolute;z-index:2;left:0;right:0;bottom:0;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding:44px 18px 17px;background:linear-gradient(transparent,rgba(3,8,12,.88));pointer-events:none}
+.memory-card figcaption span{font:800 20px/1 var(--display);letter-spacing:.035em;text-transform:uppercase}
+.memory-card figcaption small{color:var(--cyan);font-size:8px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.memory-card:hover img{transform:scale(1.025);filter:saturate(1) contrast(1.02)}
+.history-cta{display:grid;justify-items:start;width:min(calc(100% - 64px),1280px);margin:0 auto;padding:clamp(20px,4vw,60px) 0 clamp(120px,13vw,180px)}
+.history-cta h2{margin-bottom:42px;font-size:clamp(76px,10vw,140px)}
+.photo-lightbox{width:min(94vw,1100px);max-width:none;padding:0;border:1px solid rgba(255,255,255,.2);background:#03070a;color:var(--white)}
+.photo-lightbox::backdrop{background:rgba(0,0,0,.88);backdrop-filter:blur(10px)}
+.photo-lightbox img{width:100%;max-height:82vh;object-fit:contain;background:#000}
+.photo-lightbox p{margin:0;padding:14px 18px;color:var(--cyan);font:800 15px var(--display);letter-spacing:.08em;text-transform:uppercase}
+.lightbox-close{position:absolute;z-index:2;top:12px;right:12px;width:44px;height:44px;border:1px solid rgba(255,255,255,.45);border-radius:50%;background:rgba(3,8,12,.7);color:#fff;font-size:28px;line-height:1;cursor:pointer;backdrop-filter:blur(10px)}
+@media(max-width:900px){
+  .history-hero-inner,.history-heading{grid-template-columns:1fr}
+  .history-intro{max-width:520px}
+  .memory-card.memory-wide,.memory-card.memory-tall{grid-column:span 6}
+  .memory-card.memory-wide{aspect-ratio:4/3}
+  .memory-card.memory-tall{aspect-ratio:3/4}
+}
+@media(max-width:760px){
+  .mobile-dock{grid-template-columns:repeat(5,1fr)}
+  .history-page .topbar{position:relative}
+  .history-hero{padding-top:72px}
+  .history-hero-inner{width:calc(100% - 32px);gap:42px;padding-bottom:64px}
+  .history-hero h1{font-size:clamp(78px,25vw,104px)}
+  .history-intro{padding-left:20px}
+  .history-intro p{font-size:15px}
+  .history-content,.history-cta{width:calc(100% - 32px)}
+  .history-content{padding:80px 0}
+  .history-heading{gap:26px;margin-bottom:36px}
+  .history-heading .section-label{margin-bottom:32px}
+  .history-heading h2{font-size:74px}
+  .history-heading>p{font-size:14px}
+  .memory-grid{grid-template-columns:1fr;gap:12px}
+  .memory-card.memory-wide,.memory-card.memory-tall{grid-column:auto}
+  .memory-card.memory-wide{aspect-ratio:4/3}
+  .memory-card.memory-tall{aspect-ratio:3/4}
+  .memory-card figcaption{padding:52px 14px 14px}
+  .memory-card figcaption span{font-size:18px}
+  .history-cta{padding-bottom:100px}
+  .photo-lightbox{width:calc(100vw - 20px)}
+}
+@media(prefers-reduced-motion:reduce){.memory-card img{transition:none}}
