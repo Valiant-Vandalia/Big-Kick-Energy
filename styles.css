@@ -358,3 +358,36 @@
 .postseason-photo-grid figure{aspect-ratio:4/3}
 .postseason-photo-grid img,.postseason-photo-grid .night img{object-fit:contain;object-position:center;background:#071019}
 @media(max-width:760px){.postseason-photo-grid{grid-template-columns:1fr;height:auto}.postseason-photo-grid figure{height:auto;aspect-ratio:4/3}}
+
+
+/* Recruitment portal */
+.recruitment{position:relative}
+.recruitment::before{content:"JOIN";position:absolute;right:-.04em;top:30px;color:rgba(255,255,255,.025);font:900 clamp(190px,27vw,420px)/1 var(--display);letter-spacing:-.07em;pointer-events:none}
+.recruitment-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.8fr) minmax(520px,1.2fr);gap:clamp(54px,8vw,110px);align-items:start}
+.recruitment-copy{padding-top:18px}
+.recruitment-copy h2{font-size:clamp(76px,8vw,118px)}
+.recruitment-copy>p:not(.tag){max-width:580px;margin:34px 0;color:#cbd5db;font-size:17px;line-height:1.75}
+.recruitment-points{display:grid;gap:0;margin-top:42px;border-top:1px solid var(--line)}
+.recruitment-points article{display:grid;grid-template-columns:48px 1fr;gap:18px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
+.recruitment-points b{color:var(--cyan);font:900 22px var(--display)}
+.recruitment-points span{color:#dbe3e7;font-size:12px;font-weight:650;line-height:1.5;text-transform:uppercase;letter-spacing:.06em}
+.recruit-form{display:grid;gap:20px;padding:clamp(26px,4vw,46px);border:1px solid rgba(16,188,227,.42);border-top:4px solid var(--cyan);background:linear-gradient(145deg,rgba(16,188,227,.1),rgba(8,18,25,.96) 35%);box-shadow:0 28px 80px rgba(0,0,0,.28)}
+.form-heading{padding-bottom:22px;border-bottom:1px solid var(--line)}
+.form-heading>span{color:var(--cyan);font-size:9px;font-weight:800;letter-spacing:.18em}
+.form-heading>strong{display:block;margin:8px 0 7px;font:900 34px/1 var(--display);text-transform:uppercase}
+.form-heading>p{margin:0;color:var(--muted);font-size:12px;line-height:1.6}
+.form-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.recruit-form label{display:grid;gap:9px;color:#dce5e9;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.recruit-form input,.recruit-form select,.recruit-form textarea{width:100%;min-height:50px;padding:13px 14px;border:1px solid rgba(255,255,255,.18);border-radius:0;background:#071119;color:var(--white);font:500 15px/1.4 var(--body);letter-spacing:0;text-transform:none;outline:none}
+.recruit-form textarea{min-height:92px;resize:vertical}
+.recruit-form input:focus,.recruit-form select:focus,.recruit-form textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(16,188,227,.12)}
+.recruit-form select{appearance:auto}
+.recruit-form .consent{grid-template-columns:20px 1fr;gap:12px;align-items:start;color:var(--muted);font-size:10px;font-weight:600;line-height:1.5;letter-spacing:0;text-transform:none}
+.recruit-form .consent input{width:18px;min-height:18px;margin:1px 0 0;accent-color:var(--cyan)}
+.form-submit{border:0;cursor:pointer;font-family:var(--body)}
+.form-honey{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+.form-success{margin:0;padding:16px 18px;border-left:3px solid var(--cyan);background:rgba(16,188,227,.1);color:#dce8ec;font-size:12px;line-height:1.55}
+.form-success strong{display:block;color:var(--cyan);font:900 18px var(--display);text-transform:uppercase}
+.form-privacy{margin:0;color:var(--muted);font-size:9px;line-height:1.6}
+@media(max-width:900px){.recruitment-grid{grid-template-columns:1fr}.recruitment-copy{max-width:720px}}
+@media(max-width:760px){.recruitment::before{top:40px}.recruitment-grid{gap:44px}.recruitment-copy>p:not(.tag){font-size:15px}.recruit-form{padding:24px 18px}.form-row{grid-template-columns:1fr}}
