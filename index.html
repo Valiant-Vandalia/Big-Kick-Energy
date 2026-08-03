@@ -39,6 +39,10 @@
       </div>
     </section>
 
+    <div class="energy-marquee" aria-label="Big Kick Energy team spirit">
+      <div>BIG KICKS <i>●</i> GOOD PEOPLE <i>●</i> WEDNESDAY NIGHTS <i>●</i> CHARLESTON, WV <i>●</i> BRING THE ENERGY <i>●</i> BIG KICKS <i>●</i> GOOD PEOPLE <i>●</i> WEDNESDAY NIGHTS <i>●</i> CHARLESTON, WV <i>●</i> BRING THE ENERGY <i>●</i></div>
+    </div>
+
     <section class="section recruitment" id="join-team" aria-labelledby="recruitment-title">
       <div class="section-label"><span>01</span> Join Big Kick Energy</div>
       <div class="recruitment-grid">
@@ -50,6 +54,14 @@
             <article><b>01</b><span>Wednesday-night league play in Charleston</span></article>
             <article><b>02</b><span>Players and reliable substitutes welcome</span></article>
             <article><b>03</b><span>Effort, attitude, and availability matter</span></article>
+          </div>
+          <div class="role-picker" aria-label="Choose your roster interest">
+            <span>WHAT&rsquo;S YOUR ENERGY?</span>
+            <div>
+              <button type="button" data-role-pick="Full-time player"><b>⚡</b> Starter energy</button>
+              <button type="button" data-role-pick="Reliable substitute"><b>↻</b> Super sub</button>
+              <button type="button" data-role-pick="Either role"><b>∞</b> Put me in</button>
+            </div>
           </div>
         </div>
         <form class="recruit-form" action="https://formsubmit.co/joshualanham55@gmail.com" method="POST">
@@ -170,6 +182,10 @@
         <p>4:00 PM<br>Amphitheater End</p>
         <a href="https://chaskickball.leagueapps.com/" target="_blank" rel="noreferrer" aria-label="Visit the official CKA site">↗</a>
       </aside>
+      <div class="season-epilogue">
+        <div><span>THE 2026 CHAPTER</span><strong>6–4 OVERALL. 90 TOTAL RUNS. ONE MORE STORY IN THE ARCHIVE.</strong></div>
+        <a href="history.html#ledger-title">See 2026 in team history <b>→</b></a>
+      </div>
     </section>
 
     <section class="section gallery" id="gallery" aria-labelledby="gallery-title">
@@ -222,15 +238,108 @@
     </section>
   </main>
 
+  <dialog class="photo-lightbox home-lightbox" aria-label="Expanded team photo">
+    <button class="lightbox-close" type="button" aria-label="Close photo">×</button>
+    <img src="" alt="">
+    <p></p>
+  </dialog>
+
   <footer><span>BIG KICK ENERGY</span><p>Charleston, West Virginia · 2026</p><a href="#home">TOP ↑</a></footer>
   <nav class="mobile-dock" aria-label="Mobile navigation">
     <a href="#join-team"><span>＋</span>Join</a><a href="#team"><span>●</span>Team</a><a href="#season"><span>▥</span>Season</a><a href="#gallery"><span>▣</span>Photos</a><a href="history.html"><span>◫</span>History</a>
   </nav>
   <script>
-    if (new URLSearchParams(window.location.search).get('submitted') === 'true') {
-      const success = document.getElementById('form-success');
-      if (success) success.hidden = false;
-    }
+    (() => {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('submitted') === 'true') {
+        const success = document.getElementById('form-success');
+        if (success) {
+          success.hidden = false;
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+
+      const form = document.querySelector('.recruit-form');
+      const roleSelect = form?.querySelector('[name="Roster interest"]');
+      document.querySelectorAll('[data-role-pick]').forEach((button) => {
+        button.addEventListener('click', () => {
+          if (roleSelect) {
+            roleSelect.value = button.dataset.rolePick;
+            roleSelect.focus({ preventScroll: true });
+          }
+          document.querySelectorAll('[data-role-pick]').forEach((item) => item.classList.toggle('is-picked', item === button));
+          form?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      });
+
+      form?.addEventListener('submit', () => {
+        const submit = form.querySelector('.form-submit');
+        if (submit) {
+          submit.innerHTML = 'Sending the energy <span>↗</span>';
+          submit.setAttribute('aria-busy', 'true');
+        }
+      });
+
+      const lightbox = document.querySelector('.home-lightbox');
+      const lightboxImage = lightbox?.querySelector('img');
+      const lightboxCaption = lightbox?.querySelector('p');
+      document.querySelectorAll('.gallery .photo-grid figure').forEach((figure) => {
+        const image = figure.querySelector('img');
+        const caption = figure.querySelector('figcaption')?.textContent.trim() || image.alt;
+        figure.tabIndex = 0;
+        figure.setAttribute('role', 'button');
+        figure.setAttribute('aria-label', 'Open photo: ' + caption);
+        const openPhoto = () => {
+          if (!lightbox || !image) return;
+          lightboxImage.src = image.src;
+          lightboxImage.alt = image.alt;
+          lightboxCaption.textContent = caption;
+          lightbox.showModal();
+        };
+        figure.addEventListener('click', openPhoto);
+        figure.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openPhoto();
+          }
+        });
+      });
+      lightbox?.querySelector('.lightbox-close')?.addEventListener('click', () => lightbox.close());
+      lightbox?.addEventListener('click', (event) => {
+        if (event.target === lightbox) lightbox.close();
+      });
+
+      const revealItems = document.querySelectorAll('.section, .join');
+      if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        revealItems.forEach((item) => item.classList.add('reveal-ready'));
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.08 });
+        revealItems.forEach((item) => revealObserver.observe(item));
+      }
+
+      const navLinks = [...document.querySelectorAll('.topbar nav a[href^="#"], .mobile-dock a[href^="#"]')];
+      const navSections = navLinks.map((link) => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+      if ('IntersectionObserver' in window) {
+        const navObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            navLinks.forEach((link) => {
+              const active = link.getAttribute('href') === '#' + entry.target.id;
+              link.classList.toggle('is-active', active);
+              if (active) link.setAttribute('aria-current', 'location');
+              else link.removeAttribute('aria-current');
+            });
+          });
+        }, { rootMargin: '-35% 0px -55% 0px' });
+        navSections.forEach((section) => navObserver.observe(section));
+      }
+    })();
   </script>
 </body>
 </html>
