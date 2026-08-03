@@ -351,3 +351,10 @@
     font-size: 1.2rem;
   }
 }
+
+
+/* Uncropped 2026 tournament photographs */
+.postseason-photo-grid{grid-template-columns:repeat(2,minmax(0,1fr));height:auto;margin-top:24px}
+.postseason-photo-grid figure{aspect-ratio:4/3}
+.postseason-photo-grid img,.postseason-photo-grid .night img{object-fit:contain;object-position:center;background:#071019}
+@media(max-width:760px){.postseason-photo-grid{grid-template-columns:1fr;height:auto}.postseason-photo-grid figure{height:auto;aspect-ratio:4/3}}
