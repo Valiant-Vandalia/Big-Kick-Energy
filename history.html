@@ -42,6 +42,9 @@
       </div>
     </section>
 
+    <div class="energy-marquee history-energy" aria-label="Big Kick Energy history">
+      <div>EST. 2018 <i>●</i> TEAM NIGHTS <i>●</i> PLAYOFF MOMENTS <i>●</i> SIDELINE LAUGHS <i>●</i> STILL KICKING <i>●</i> EST. 2018 <i>●</i> TEAM NIGHTS <i>●</i> PLAYOFF MOMENTS <i>●</i> SIDELINE LAUGHS <i>●</i> STILL KICKING <i>●</i></div>
+    </div>
 
     <section class="season-ledger" aria-labelledby="ledger-title">
       <div class="ledger-heading">
@@ -52,6 +55,11 @@
         <p>Big Kick Energy has taken the field since 2018. This archive will grow season by season with a team photo and a quick look back at how each year unfolded.</p>
       </div>
 
+      <div class="archive-scoreboard" aria-label="Big Kick Energy archive summary">
+        <article><span>ON THE FIELD SINCE</span><strong>2018</strong></article>
+        <article><span>SEASONS ON DISPLAY</span><strong>5</strong></article>
+        <article><span>TEAM STANDARD</span><strong>BIG ENERGY</strong></article>
+      </div>
       <div class="ledger-grid">
         <article class="ledger-card ledger-featured">
           <header>
@@ -256,6 +264,20 @@
     lightbox.addEventListener('click', (event) => {
       if (event.target === lightbox) lightbox.close();
     });
+
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const revealItems = document.querySelectorAll('.ledger-card, .memory-card, .history-cta');
+      revealItems.forEach((item) => item.classList.add('reveal-ready'));
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      revealItems.forEach((item) => observer.observe(item));
+    }
   </script>
 </body>
 </html>
